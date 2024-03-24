@@ -1,0 +1,13 @@
+MUDAR ESTADO PARA UF
+
+
+tabela forma de pagamento
+
+id e descricao
+
+
+tabela fornecedor
+
+endereco
+cidade
+uf
