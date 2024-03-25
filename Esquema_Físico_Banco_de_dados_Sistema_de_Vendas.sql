@@ -1,7 +1,9 @@
 -- Geração de Modelo físico
 -- Sql ANSI 2003 - brModelo.
 
-
+CREATE DATABASE BDVENDAS;
+CREATE USER 'master'@'%' IDENTIFIED BY '123';
+GRANT ALL ON *.* TO 'master'@'%' WITH GRANT OPTION;
 
 CREATE TABLE tb_produto (
 id_prod integer PRIMARY KEY,
