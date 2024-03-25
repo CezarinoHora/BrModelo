@@ -5,15 +5,8 @@ CREATE DATABASE BDVENDAS;
 CREATE USER 'master'@'%' IDENTIFIED BY '123';
 GRANT ALL ON *.* TO 'master'@'%' WITH GRANT OPTION;
 
-CREATE TABLE tb_produto (
-id_prod integer PRIMARY KEY,
-descricao varchar(100),
-qtd_estoque integer,
-vlr_preco numeric(10,2),
-id_forn integer,
-FOREIGN KEY(id_forn) REFERENCES tb_fornecedor (id_forn)
-)
 
+USE BDVENDAS;
 CREATE TABLE tb_cliente (
 id_cliente integer PRIMARY KEY,
 nome varchar(100),
@@ -24,7 +17,7 @@ cep varchar(100),
 endereco varchar(255),
 cidade varchar(100),
 uf char(2)
-)
+);
 
 CREATE TABLE tb_funcionario (
 id_Func integer PRIMARY KEY,
@@ -39,7 +32,7 @@ cep varchar(100),
 endereco varchar(255),
 cidade varchar(100),
 uf char(2)
-)
+);
 
 CREATE TABLE tb_fornecedor (
 id_forn integer PRIMARY KEY,
@@ -51,7 +44,22 @@ cep varchar(100),
 endereco varchar(255),
 cidade varchar(100),
 uf char(2)
-)
+);
+
+CREATE TABLE tb_produto (
+id_prod integer PRIMARY KEY,
+descricao varchar(100),
+qtd_estoque integer,
+vlr_preco numeric(10,2),
+id_forn integer,
+FOREIGN KEY(id_forn) REFERENCES tb_fornecedor (id_forn)
+);
+
+CREATE TABLE tb_forma_pgto (
+id_fpgto integer PRIMARY KEY,
+descricao varchar(100)
+);
+
 
 CREATE TABLE tb_venda (
 id_venda integer PRIMARY KEY,
@@ -64,12 +72,7 @@ id_fpgto integer,
 FOREIGN KEY(id_cliente) REFERENCES tb_cliente (id_cliente),
 FOREIGN KEY(id_Func) REFERENCES tb_funcionario (id_Func),
 FOREIGN KEY(id_fpgto) REFERENCES tb_forma_pgto (id_fpgto)
-)
-
-CREATE TABLE tb_forma_pgto (
-id_fpgto integer PRIMARY KEY,
-descricao varchar(100)
-)
+);
 
 CREATE TABLE tb_itens_venda (
 id_itensv integer PRIMARY KEY,
@@ -79,5 +82,5 @@ id_prod integer,
 id_venda integer,
 FOREIGN KEY(id_prod) REFERENCES tb_produto (id_prod),
 FOREIGN KEY(id_venda) REFERENCES tb_venda (id_venda)
-)
+);
 
